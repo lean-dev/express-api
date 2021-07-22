@@ -3,3 +3,7 @@ node_modules/
 
 # Jest coverage
 coverage/
+
+# Sensible data
+.env
+.env.test
