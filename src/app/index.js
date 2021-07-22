@@ -19,7 +19,7 @@ const {
 
 app.use(authRoutes);
 
-app.use('/api', passport.authenticate(isAuthenticated, { session: false }));
+// app.use('/api', passport.authenticate(isAuthenticated, { session: false }));
 app.post(
   '/api/*',
   passport.authenticate(isAuthenticatedAsAdmin, { session: false })

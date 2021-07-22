@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon src/main.js",
+    "debug": "nodemon --inspect src/main.js",
     "test": "jest"
   },
   "devDependencies": {
@@ -25,6 +26,7 @@
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "ws": "^7.5.3"
   }
 }

@@ -16,6 +16,7 @@ router.get(
 
 router.get('/:id', async (req, res) => {
   const actor = await actorModel.getById(req.params.id);
+
   if (actor) {
     res.status(200).send(actor);
   } else {
@@ -26,9 +27,14 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   const { firstname, lastname } = req.body;
   if (!firstname || firstname.length > 10) {
-    res.status(400).send('Invalid data');
+    res.status(400).send('Invalid data for post');
   } else {
     const actor = await actorModel.create(firstname, lastname);
+    req.app.get('wss').clients.forEach(function each(client) {
+      if (client.readyState === 1) {
+        client.send(JSON.stringify({ msg: 'Actor created', payload: actor }));
+      }
+    });
     res.status(201).send(actor);
   }
 });
