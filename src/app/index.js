@@ -6,6 +6,7 @@ require('./env');
 const app = express();
 
 // Middlewares
+app.use(express.json());
 
 // Auth
 app.use('/api', (req, res, next) => {
